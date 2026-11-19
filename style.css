@@ -1,0 +1,362 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    color: #ffffff;
+    padding: 40px 20px;
+    background: linear-gradient(
+        -45deg,
+        #101b38,
+        #243b67,
+        #285b7d,
+        #162b50
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+header p {
+    color: #c9dcf5;
+    font-size: 17px;
+}
+
+
+form {
+    display: flex;
+    gap: 12px;
+    max-width: 650px;
+    margin: 0 auto 20px;
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    padding: 16px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.95);
+    color: #17243e;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #43d9f5;
+    box-shadow: 0 0 12px rgba(67, 217, 245, 0.35);
+}
+
+button {
+    padding: 16px 28px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #39d5ee, #40a9e8);
+    color: #10213c;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(57, 213, 238, 0.3);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+#status {
+    text-align: center;
+    min-height: 28px;
+    margin: 18px 0;
+    color: #ffe49a;
+    font-size: 15px;
+}
+
+
+#currentWeather {
+    margin-top: 30px;
+}
+
+.weather-card {
+    position: relative;
+    overflow: hidden;
+    padding: 40px 25px;
+    text-align: center;
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+
+    transition: 0.4s;
+}
+
+.weather-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.17);
+}
+
+.weather-card h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.weather-icon {
+    font-size: 75px;
+    margin: 15px 0;
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.temperature {
+    font-size: 72px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.condition {
+    font-size: 22px;
+    color: #d5eaff;
+    margin-bottom: 10px;
+}
+
+.weather-card p:not(.weather-icon):not(.temperature):not(.condition) {
+    margin: 7px 0;
+    font-size: 16px;
+    color: #e7efff;
+}
+
+
+#forecastSection {
+    margin-top: 45px;
+}
+
+#forecastSection h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+#forecast {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.forecast-card {
+    padding: 22px 12px;
+    text-align: center;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    transition: 0.3s;
+}
+
+.forecast-card:hover {
+    transform: translateY(-7px);
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.forecast-card h3 {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.forecast-icon {
+    font-size: 38px;
+    margin: 12px 0;
+}
+
+.forecast-card p:not(.forecast-icon) {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #edf4ff;
+}
+
+
+@media (max-width: 850px) {
+    #forecast {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    header h1 {
+        font-size: 34px;
+    }
+}
+
+/* =================================
+   MOBILE RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 550px) {
+    body {
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 29px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .weather-card {
+        padding: 30px 15px;
+    }
+
+    .weather-card h2 {
+        font-size: 23px;
+    }
+
+    .temperature {
+        font-size: 55px;
+    }
+
+    #forecast {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #forecastSection h2 {
+        font-size: 24px;
+    }
+}
+
+
+@media (max-width: 350px) {
+    #forecast {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+/* Celsius / Fahrenheit Toggle */
+
+.unit-toggle {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+#unitToggle {
+    padding: 10px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#unitToggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+.location-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+#locationBtn {
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#locationBtn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-3px);
+}
+
+#locationBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
